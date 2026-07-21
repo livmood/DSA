@@ -6,7 +6,17 @@ class LinkedList {
     this.length = 1;
   }
 
-  //TODO: push function (given a value, add a new node to end of list)
+  //NEEDS REVIEW: push function (given a value, add a new node to end of list)
+  push(value) {
+    if(this.head === null) {
+      this.constructor(value);
+      return;
+    }
+    const newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+  }
+
   //TODO: pop function (removes and returns node at end of list) //remember to consider edge cases: what if there's only one node?
   //TODO: unshift function (given a value, add a new node to begining of list)
   //TODO: shift function (removes and returns node at beginning of list)
