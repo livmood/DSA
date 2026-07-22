@@ -17,18 +17,30 @@ class LinkedList {
     const newNode = new Node(value);
     this.tail.next = newNode;
     this.tail = newNode;
+    this.length++;
   }
 
   //TODO: pop function (removes and returns node at end of list) //remember to consider edge cases: what if there's only one node?
   pop() {
-    if(this.length === 0) console.error("Linked List is already empty and was not initialized properly"); //TODO: make a 'makeEmpty' function to test this case
-    let temp = this.head;
+    if(this.length === 0) return console.error("Linked List is already empty and was not initialized properly"); //TODO: make a 'makeEmpty' function to test this case
     if(this.length === 1) {
+      let result = this.head.value;
       this.tail = null;
       this.head = null;
-      return temp;
+      this.length--;
+      return result;
     }
+    let temp = this.head;
+    while(temp.next !== this.tail) {
+      temp = temp.next;
+    }
+    let returnValue = this.tail.value;
+    this.tail = temp;
+    this.tail.next = null;
+    this.length--;
+    return returnValue;
   }
+
   //TODO: unshift function (given a value, add a new node to begining of list)
   //TODO: shift function (removes and returns node at beginning of list)
   //TODO: get function (given an index, return the node at that index)
@@ -39,7 +51,14 @@ class LinkedList {
   //TODO: reverse function (in place reversal)
 }
 
-const myLL = new LinkedList(4);
-console.log(myLL);
-myLL.push(5);
-console.log(myLL);
+function test() {
+  const myLL = new LinkedList(4);
+  console.log(myLL);
+  myLL.push(5);
+  console.log(myLL);
+
+  console.log("Should return 5", myLL.pop());
+  console.log("Should return 4", myLL.pop());
+  console.log("Last one: ", myLL.pop());
+}
+test();
