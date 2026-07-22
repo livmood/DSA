@@ -41,7 +41,7 @@ class LinkedList {
     return returnValue;
   }
 
-  //TODO: unshift function (given a value, add a new node to begining of list)
+  //DONE: unshift function (given a value, add a new node to begining of list)
   unshift(value) {
     const newNode = new Node(value);
     newNode.next = this.head;
@@ -50,6 +50,14 @@ class LinkedList {
   }
 
   //TODO: shift function (removes and returns node at beginning of list)
+  shift() {
+    if(this.length === 0) return console.error("Linked List is already empty");
+    let headVal = this.head.value;
+    this.head = this.head.next;
+    this.length--;
+    return headVal;
+  }
+
   //TODO: get function (given an index, return the node at that index)
   //TODO: set function (given an index and a value, set the node at that index to the value)
   //TODO: print function (prints the entire linked list)
@@ -67,5 +75,9 @@ function test() {
   console.log("Should return 5", myLL.pop());
   myLL.unshift(3);
   console.log(myLL);
+  console.log("Should return 3", myLL.shift());
+  console.log("Should return 4", myLL.shift());
+  console.log("Should return error", myLL.shift());
 }
+
 test();
