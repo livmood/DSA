@@ -59,6 +59,15 @@ class LinkedList {
   }
 
   //TODO: get function (given an index, return the node at that index)
+  get(index) {
+    if(index < 0 || index > this.length) console.error("Index is out of range.");
+    let curr = this.head;
+    for(let i = 0; i<index; i++) {
+      curr=curr.next;
+    }
+    return curr.value;
+  }
+
   //TODO: set function (given an index and a value, set the node at that index to the value)
   //TODO: print function (prints the entire linked list)
   //TODO: insert function (given an index and a value, insert a new node at that index)
@@ -71,13 +80,12 @@ function test() {
   console.log(myLL);
   myLL.push(5);
   console.log(myLL);
-
   console.log("Should return 5", myLL.pop());
   myLL.unshift(3);
   console.log(myLL);
   console.log("Should return 3", myLL.shift());
-  console.log("Should return 4", myLL.shift());
-  console.log("Should return error", myLL.shift());
+  console.log(myLL.get(0));
+  console.log(myLL.get(13));
 }
 
 test();
