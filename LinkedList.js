@@ -1,3 +1,5 @@
+import {Node} from "./Node.js";
+
 class LinkedList {
   constructor(value) {
     const newNode = new Node(value);
@@ -18,6 +20,15 @@ class LinkedList {
   }
 
   //TODO: pop function (removes and returns node at end of list) //remember to consider edge cases: what if there's only one node?
+  pop() {
+    if(this.length === 0) console.error("Linked List is already empty and was not initialized properly"); //TODO: make a 'makeEmpty' function to test this case
+    let temp = this.head;
+    if(this.length === 1) {
+      this.tail = null;
+      this.head = null;
+      return temp;
+    }
+  }
   //TODO: unshift function (given a value, add a new node to begining of list)
   //TODO: shift function (removes and returns node at beginning of list)
   //TODO: get function (given an index, return the node at that index)
@@ -27,3 +38,8 @@ class LinkedList {
   //TODO: remove function (given an index, remove the node at that index)
   //TODO: reverse function (in place reversal)
 }
+
+const myLL = new LinkedList(4);
+console.log(myLL);
+myLL.push(5);
+console.log(myLL);
