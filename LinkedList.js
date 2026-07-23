@@ -103,7 +103,20 @@ class LinkedList {
     curr.next = newNode;
   }
 
-  //TODO: remove function (given an index, remove the node at that index)
+  //NEEDS REVIEW: remove function (given an index, remove the node at that index and return it's value)
+  remove(index) {
+    if(index < 0 || index > this.length) return console.error("Index is out of bounds");
+    if(this.length === 1) this.unshift();
+    if(index === this.length) this.pop();
+    let curr = this.head;
+    for(let i = 0; i < index; i++) {
+      curr = curr.next;
+    }
+    let returnVal = curr.next.value;
+    curr.next = curr.next.next;
+    return returnVal;
+  }
+
   //TODO: reverse function (in place reversal)
 }
 
