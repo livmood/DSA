@@ -118,6 +118,63 @@ class LinkedList {
   }
 
   //TODO: reverse function (in place reversal)
+  reverse() {
+    if(this.length === 1) return;
+    let curr = this.head;
+    this.head = this.tail;
+    this.tail = curr;
+    if(this.length === 2) return;
+    let future;
+    while(curr.next !== null) {
+      future = curr.next;
+      curr.next = curr;
+      curr = future;
+    }
+  }
+
+  //Interview Prep Section!
+  
+  //TODO: find middle ndoe
+  findMiddleNode() {
+    let slow = this.head;
+    let fast = this.head;
+    while(fast !== null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return slow;
+  }
+
+  //DONE: has loop
+  hasLoop() {
+    let slow = this.head;
+    let fast = this.head;
+    while(fast !== null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if(slow === fast) return true;
+    }
+    return false;
+  }
+
+  //DONE: find kth node from end
+  findKthNode(k) {
+    let slow = this.head;
+    let fast = this.head;
+    while(k>1) {
+      fast = fast.next;
+      k--;
+    }
+    if(fast === null || k<=0) return null;
+    while(fast.next !== null) {
+      slow = slow.next;
+      fast = fast.next;
+    }
+    return slow;
+  }
+
+  //todo: remove duplicates
+  
 }
 
 function test() {
