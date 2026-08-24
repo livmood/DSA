@@ -138,7 +138,7 @@ class LinkedList {
   findMiddleNode() {
     let slow = this.head;
     let fast = this.head;
-    while(fast !== null) {
+    while(fast !== null && fast !== this.tail) {
       slow = slow.next;
       fast = fast.next.next;
     }
@@ -149,7 +149,7 @@ class LinkedList {
   hasLoop() {
     let slow = this.head;
     let fast = this.head;
-    while(fast !== null) {
+    while(fast.next !== null && fast.next.next !== null) {
       slow = slow.next;
       fast = fast.next.next;
       if(slow === fast) return true;
