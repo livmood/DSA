@@ -134,7 +134,7 @@ class LinkedList {
 
   //Interview Prep Section!
   
-  //TODO: find middle ndoe
+  //DONE: find middle node
   findMiddleNode() {
     let slow = this.head;
     let fast = this.head;
@@ -173,7 +173,25 @@ class LinkedList {
     return slow;
   }
 
-  //todo: remove duplicates
+  //TODO: remove duplicates
+  removeDuplicates() {
+    let currVal = this.head;
+    let nextVal = this.head;
+    while(currVal !== null && currVal.next !== null) {
+      if(nextVal.next.value === currVal.value) {
+        let temp = nextVal.next;
+        nextVal.next = temp.next;
+        temp.next = null;
+        this.length--;
+      } else {
+        nextVal = nextVal.next;
+      }
+      if(nextVal.next === null) {
+        currVal = currVal.next;
+        nextVal = currVal;
+      }
+    }
+  }
   
 }
 
