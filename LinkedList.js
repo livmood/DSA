@@ -173,7 +173,7 @@ class LinkedList {
     return slow;
   }
 
-  //TODO: remove duplicates
+  //DONE: remove duplicates
   removeDuplicates() {
     let currVal = this.head;
     let nextVal = this.head;
@@ -192,7 +192,33 @@ class LinkedList {
       }
     }
   }
-  
+
+  partitionList(x) {
+    let temp = this.head;
+    let leftPointer = new Node(null);
+    let rightPointer = new Node(null);
+    let rightHead = null;
+    while(temp !== null) {
+      if(temp.value < x) {
+        if(leftPointer.value === null) {
+          this.head = temp;
+        }
+        leftPointer.next = temp;
+        leftPointer = leftPointer.next;
+        rightPointer.next = null;
+      }  else {
+        if(rightPointer.value === null) {
+          rightHead = temp;
+        }
+        rightPointer.next = temp;
+        rightPointer = rightPointer.next;
+        leftPointer.next = null;
+      }
+      temp = temp.next;
+    }
+    leftPointer.next = rightHead;
+    this.tail = rightPointer;
+  }
 }
 
 function test() {
